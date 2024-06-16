@@ -1,0 +1,26 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: ZhiPuRAG
+  jackson:
+    serialization:
+      indent-output: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    com.ruyun: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+
+zhipu:
+  key: "afa11a1014b7cf92395f9506c6132f54.2wHlRDiYn921lRDy"
+  knowledge_id: "1776965889154023424"
+  prompt: "从文档\n\"\"\"\n{{knowledge}}\n\"\"\"\n分别寻找中找\n\"\"\"\n{{question}}\n\"\"\"\n当中以逗号分隔的文本所表达语义相同、相似或有直接逻辑关系的文本，并直接返回找到的文本片段。"
