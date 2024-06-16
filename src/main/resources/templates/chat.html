@@ -72,7 +72,7 @@
     function appendMessage(content, sender) {
         const messageContainer = document.createElement('div');
         messageContainer.className = `message ${sender}`;
-        messageContainer.textContent = content;
+        messageContainer.innerHTML = content.replace(/\n/g, '<br>'); // 替换换行符为 <br>
         document.getElementById('messages').appendChild(messageContainer);
     }
 
@@ -84,16 +84,16 @@
         appendMessage(message, 'user');
         input.value = '';
 
-        const response = await fetch('/chat/message', {
+        const response = await fetch('/chat', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/json'
             },
-            body: new URLSearchParams({message})
+            body: JSON.stringify({user: message})
         });
 
-        const result = await response.text();
-        appendMessage(result, 'ai');
+        const result = await response.json();
+        appendMessage(result.system, 'ai');
     }
 </script>
 </body>
