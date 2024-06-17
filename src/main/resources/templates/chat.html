@@ -1,100 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>Chat with AI</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        .chat-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .messages {
-            border: 1px solid #eee;
-            padding: 10px;
-            height: 400px;
-            overflow-y: scroll;
-            margin-bottom: 20px;
-        }
-
-        .input-group {
-            display: flex;
-        }
-
-        .input-group input {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px 0 0 5px;
-        }
-
-        .input-group button {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-left: none;
-            background-color: #007bff;
-            color: white;
-            border-radius: 0 5px 5px 0;
-        }
-
-        .message {
-            margin: 10px 0;
-        }
-
-        .message.user {
-            text-align: right;
-        }
-    </style>
+    <title>智谱知识库</title>
+    <link rel="stylesheet" th:href="@{/chat.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
 <div class="chat-container">
-    <button onclick="newChat()">新聊天</button>
+    <div class="header">
+        <button class="new-chat-btn" onclick="newChat()">
+            <i class="fas fa-plus"></i> 新聊天
+        </button>
+        女性知识库
+    </div>
     <div class="messages" id="messages"></div>
     <div class="input-group">
-        <input type="text" id="messageInput" placeholder="Type your message here...">
-        <button onclick="sendMessage()">Send</button>
+        <input type="text" id="messageInput" placeholder="在这里输入你的消息...">
+        <button onclick="sendMessage()">发送</button>
+    </div>
+    <div id="loading" class="loading" style="display: none;">
+        <i class="fas fa-spinner fa-spin"></i> 正在输入...
     </div>
 </div>
-
-<script>
-    function newChat() {
-        document.getElementById('messages').innerHTML = '';
-    }
-
-    function appendMessage(content, sender) {
-        const messageContainer = document.createElement('div');
-        messageContainer.className = `message ${sender}`;
-        messageContainer.innerHTML = content.replace(/\n/g, '<br>'); // 替换换行符为 <br>
-        document.getElementById('messages').appendChild(messageContainer);
-    }
-
-    async function sendMessage() {
-        const input = document.getElementById('messageInput');
-        const message = input.value;
-        if (message.trim() === '') return;
-
-        appendMessage(message, 'user');
-        input.value = '';
-
-        const response = await fetch('/chat', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({user: message})
-        });
-
-        const result = await response.json();
-        appendMessage(result.system, 'ai');
-    }
-</script>
+<script th:src="@{/chat.js}"></script>
 </body>
 </html>

@@ -30,15 +30,13 @@ public class ZhiPuAiService {
         this.client = new ClientV4.Builder(apiKey).build();
     }
 
-    public Message chat(String userMessage) {
+    public Message chat(String userMessage, String requestId) {
         List<ChatMessage> messages = List.of(new ChatMessage(ChatMessageRole.USER.value(), userMessage));
-        String requestId = String.format("ruyun-%d", System.currentTimeMillis());
-
         ChatCompletionRequest chatCompletionRequest = ChatCompletionRequest.builder()
                 .model(Constants.ModelChatGLM4)
                 .stream(Boolean.TRUE)
                 .messages(messages)
-                .requestId(requestId)
+                .requestId(requestId == null ? null : String.format("ruyun-%d", System.currentTimeMillis()))
                 .tools(getChatTools())
                 .toolChoice("auto")
                 .build();
@@ -70,9 +68,9 @@ public class ZhiPuAiService {
             responseBuilder.append(errorMessage);
         }
         String message = responseBuilder.toString();
-        log.info("Id：{},创建时间：{},token用量：[补全：{},提示词：{}，总用量：{}]\n内容：{}", logInfo.getId(), logInfo.getFormattedCreated(), logInfo.getCompletionTokens(), logInfo.getPromptTokens(), logInfo.getTotalTokens(), message);
+        log.info("Id：{},创建时间：{},token用量：[补全：{},提示词：{}，总用量：{}]\n内容：{}\n", logInfo.getId(), logInfo.getFormattedCreated(), logInfo.getCompletionTokens(), logInfo.getPromptTokens(), logInfo.getTotalTokens(), message);
         logInfo = new LogInfo();
-        return new Message(userMessage, message);
+        return new Message(userMessage, message, requestId);
     }
 
     private List<ChatTool> getChatTools() {
