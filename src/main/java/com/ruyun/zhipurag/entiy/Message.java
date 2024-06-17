@@ -6,12 +6,10 @@ import lombok.Data;
 public class Message {
     private String user;
     private String system;
-    private boolean complete;
 
-    public Message(String user, String system, boolean complete) {
+    public Message(String user, String system) {
         this.user = user;
         this.system = system;
-        this.complete = complete;
     }
 
 }

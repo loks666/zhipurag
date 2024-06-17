@@ -29,4 +29,4 @@ logging:
 zhipu:
   key: "afa11a1014b7cf92395f9506c6132f54.2wHlRDiYn921lRDy"
   knowledge_id: "1776965889154023424"
-  prompt: "从文档\n\"\"\"\n{{knowledge}}\n\"\"\"\n分别寻找中找\n\"\"\"\n{{question}}\n\"\"\"\n当中以逗号分隔的文本所表达语义相同、相似或有直接逻辑关系的文本，并直接返回找到的文本片段。"
+  prompt: "从文档{{knowledge}}中分别寻找中找{{question}}当中以逗号分隔的文本所表达语义相同、相似或有直接逻辑关系的文本，并直接返回找到的文本片段。"
