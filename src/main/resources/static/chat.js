@@ -22,7 +22,6 @@ function appendMessage(content, sender) {
     }
 }
 
-
 async function sendMessage() {
     const input = document.getElementById('messageInput');
     const message = input.value;
@@ -35,7 +34,7 @@ async function sendMessage() {
     document.getElementById('loading').style.display = 'flex';
 
     try {
-        const response = await fetch('/api/chat', {
+        const response = await fetch('/chat', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
