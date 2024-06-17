@@ -5,12 +5,18 @@ function newChat() {
     currentRequestId = null; // 清除当前的 requestId
 }
 
-function appendMessage(content, sender) {
+function appendMessage(content, sender, isMarkdown = false) {
     const messageContainer = document.createElement('div');
     messageContainer.className = `message ${sender}`;
     const messageBubble = document.createElement('div');
     messageBubble.className = 'message-bubble';
-    messageBubble.innerHTML = content.replace(/\n/g, '<br>');
+
+    if (isMarkdown) {
+        messageBubble.innerHTML = marked.parse(content); // 使用 marked.js 渲染 Markdown 内容
+    } else {
+        messageBubble.innerHTML = content.replace(/\n/g, '<br>');
+    }
+
     messageContainer.appendChild(messageBubble);
 
     const messagesContainer = document.getElementById('messages');
@@ -50,11 +56,17 @@ async function sendMessage() {
             body: JSON.stringify({ user: message })
         });
 
+        if (!response.ok) {
+            return Promise.reject(new Error(`HTTP error! status: ${response.status}`));
+        }
+
         const result = await response.json();
+        console.log('Response:', result); // 添加日志输出以调试问题
         currentRequestId = result.requestId; // 更新 requestId
-        appendMessage(result.system, 'ai');
+        appendMessage(result.system, 'ai', true); // 假设系统消息包含Markdown
     } catch (error) {
         console.error('Error:', error);
+        appendMessage(`Error: ${error.message}`, 'system'); // 显示错误消息
     } finally {
         // 隐藏等待图标
         loadingElement.style.display = 'none';
