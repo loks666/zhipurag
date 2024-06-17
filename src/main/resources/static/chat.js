@@ -22,6 +22,7 @@ function appendMessage(content, sender) {
     }
 }
 
+
 async function sendMessage() {
     const input = document.getElementById('messageInput');
     const message = input.value;

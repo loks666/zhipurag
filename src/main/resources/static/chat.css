@@ -60,48 +60,31 @@ body {
 
 .message {
     margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 10px;
-    display: inline-block;
-    clear: both;
-    word-wrap: break-word;
-    white-space: pre-wrap; /* 保持换行符和空格 */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* 确保消息在右边 */
 }
 
 .message.user {
+    justify-content: flex-end;
+}
+
+.message-bubble {
     background-color: #dcf8c6;
     color: #000;
     border-radius: 10px 10px 0 10px;
-    align-self: flex-end;
-    margin-left: auto;
-    max-width: 70%;
-    text-align: right; /* 确保文本内容右对齐 */
-    display: flex; /* 确保子元素正确布局 */
-    justify-content: flex-end; /* 确保子元素右对齐 */
-}
-
-.message.user .message-bubble {
-    background-color: #dcf8c6;
-    color: #000;
-    border-radius: 10px 10px 0 10px;
-    margin-left: auto;
-    max-width: 100%; /* 确保消息气泡不超过父容器宽度 */
-}
-
-.message.ai {
-    background-color: #f1f0f0;
-    color: #000;
-    border-radius: 10px 10px 10px 0;
-    text-align: left;
+    padding: 10px;
+    max-width: 70%; /* 设置消息气泡最大宽度 */
     word-wrap: break-word;
-    white-space: normal;
+    white-space: pre-wrap; /* 保持换行符和空格 */
+    display: inline-block; /* 确保根据内容调整宽度 */
 }
 
 .message.ai .message-bubble {
     background-color: #f1f0f0;
     color: #000;
     border-radius: 10px 10px 10px 0;
-    max-width: 70%;
+    max-width: 70%; /* 设置消息气泡最大宽度 */
 }
 
 .input-group {
@@ -143,12 +126,4 @@ body {
     justify-content: center;
     padding: 10px;
     color: #999;
-}
-
-.message-bubble {
-    padding: 10px;
-    border-radius: 10px;
-    max-width: 70%;
-    word-wrap: break-word;
-    white-space: pre-wrap; /* 保持换行符和空格 */
 }
