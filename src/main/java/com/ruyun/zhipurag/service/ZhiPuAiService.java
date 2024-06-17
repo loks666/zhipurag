@@ -31,12 +31,15 @@ public class ZhiPuAiService {
     }
 
     public Message chat(String userMessage, String requestId) {
+        if (requestId == null) {
+            requestId = String.format("ruyun-%d", System.currentTimeMillis());
+        }
         List<ChatMessage> messages = List.of(new ChatMessage(ChatMessageRole.USER.value(), userMessage));
         ChatCompletionRequest chatCompletionRequest = ChatCompletionRequest.builder()
                 .model(Constants.ModelChatGLM4)
                 .stream(Boolean.TRUE)
                 .messages(messages)
-                .requestId(requestId == null ? null : String.format("ruyun-%d", System.currentTimeMillis()))
+                .requestId(requestId)
                 .tools(getChatTools())
                 .toolChoice("auto")
                 .build();

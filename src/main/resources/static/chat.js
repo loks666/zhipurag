@@ -35,19 +35,23 @@ async function sendMessage() {
     // 显示等待图标
     const loadingElement = document.getElementById('loading');
     loadingElement.style.display = 'flex';
-    loadingElement.innerText = '思考中……';
+
+    let url = '/chat';
+    if (currentRequestId) {
+        url += `?requestId=${currentRequestId}`;
+    }
 
     try {
-        const response = await fetch('/chat', {
+        const response = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ user: message, requestId: currentRequestId })
+            body: JSON.stringify({ user: message })
         });
 
         const result = await response.json();
-        currentRequestId = result.requestId; // 保存返回的 requestId
+        currentRequestId = result.requestId; // 更新 requestId
         appendMessage(result.system, 'ai');
     } catch (error) {
         console.error('Error:', error);
