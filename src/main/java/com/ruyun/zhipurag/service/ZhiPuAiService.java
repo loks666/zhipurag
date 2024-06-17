@@ -16,10 +16,10 @@ import java.util.List;
 @Service
 public class ZhiPuAiService {
 
+    private static LogInfo logInfo = new LogInfo();
     private final String knowledgeId;
     private final String promptTemplate;
     private final ClientV4 client;
-    private static LogInfo logInfo = new LogInfo();
 
 
     public ZhiPuAiService(@Value("${zhipu.key}") String apiKey,

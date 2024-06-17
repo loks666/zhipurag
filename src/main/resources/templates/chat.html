@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>智谱知识库</title>
     <link rel="stylesheet" th:href="@{/css/chat.css}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
@@ -18,7 +18,7 @@
     <div class="messages" id="messages">
     </div>
     <div class="input-group">
-        <label for="messageInput"></label><input type="text" id="messageInput" placeholder="在这里输入你的消息...">
+        <label for="messageInput"></label><input id="messageInput" placeholder="在这里输入你的消息..." type="text">
         <button onclick="sendMessage()">发送</button>
     </div>
 </div>

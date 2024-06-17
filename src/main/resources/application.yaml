@@ -21,11 +21,6 @@ logging:
     root: INFO
     org.springframework.web: INFO
     com.ruyun: INFO
-#  pattern:
-#    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
-#    file: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
-#  file:
-#    name: logs/%d{yyyy-MM-dd}.log
 
 zhipu:
   key: "your-key"

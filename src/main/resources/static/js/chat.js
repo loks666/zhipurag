@@ -53,7 +53,7 @@ async function sendMessage() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ user: message })
+            body: JSON.stringify({user: message})
         });
 
         if (!response.ok) {
