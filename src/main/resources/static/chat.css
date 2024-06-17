@@ -56,13 +56,15 @@ body {
     flex: 1; /* 允许消息区域扩展 */
     overflow-y: auto;
     border-bottom: 1px solid #ddd;
+    position: relative; /* 使loading相对于messages容器定位 */
 }
 
 .message {
     margin-bottom: 10px;
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* 确保消息在右边 */
+    word-wrap: break-word;
+    white-space: pre-wrap; /* 保持换行符和空格 */
 }
 
 .message.user {
@@ -75,9 +77,11 @@ body {
     border-radius: 10px 10px 0 10px;
     padding: 10px;
     max-width: 70%; /* 设置消息气泡最大宽度 */
-    word-wrap: break-word;
-    white-space: pre-wrap; /* 保持换行符和空格 */
     display: inline-block; /* 确保根据内容调整宽度 */
+}
+
+.message.ai {
+    justify-content: flex-start;
 }
 
 .message.ai .message-bubble {
@@ -126,4 +130,7 @@ body {
     justify-content: center;
     padding: 10px;
     color: #999;
+    position: absolute;
+    left: 20px; /* 设置到左边 */
+    bottom: 20px; /* 设置到messages容器的左下角 */
 }

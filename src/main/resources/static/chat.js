@@ -19,6 +19,8 @@ function appendMessage(content, sender) {
 
     if (sender === 'user') {
         messageContainer.style.alignSelf = 'flex-end';
+    } else {
+        messageContainer.style.alignSelf = 'flex-start';
     }
 }
 
@@ -31,7 +33,9 @@ async function sendMessage() {
     input.value = '';
 
     // 显示等待图标
-    document.getElementById('loading').style.display = 'flex';
+    const loadingElement = document.getElementById('loading');
+    loadingElement.style.display = 'flex';
+    loadingElement.innerText = '思考中……';
 
     try {
         const response = await fetch('/chat', {
@@ -49,6 +53,6 @@ async function sendMessage() {
         console.error('Error:', error);
     } finally {
         // 隐藏等待图标
-        document.getElementById('loading').style.display = 'none';
+        loadingElement.style.display = 'none';
     }
 }
