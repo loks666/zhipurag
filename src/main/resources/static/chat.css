@@ -123,20 +123,3 @@ body {
 .input-group button:hover {
     background-color: #0056b3;
 }
-
-.loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    color: #999;
-    position: absolute;
-    left: 20px; /* 设置到左边 */
-    bottom: 20px; /* 设置到messages容器的左下角 */
-    font-size: 1.5em; /* 调整图标大小 */
-}
-
-.loading .loading-text {
-    font-size: 0.8em; /* 调整“思考中”文本的大小 */
-    margin-right: 5px; /* 添加与图标之间的空格 */
-}

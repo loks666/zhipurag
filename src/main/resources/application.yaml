@@ -13,7 +13,7 @@ spring:
   thymeleaf:
     prefix: classpath:/templates/
     suffix: .html
-    mode: HTML5
+    mode: HTML
     cache: false
 
 logging:
@@ -21,9 +21,11 @@ logging:
     root: INFO
     org.springframework.web: INFO
     com.ruyun: INFO
-  pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
-    file: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+#  pattern:
+#    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+#    file: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+#  file:
+#    name: logs/%d{yyyy-MM-dd}.log
 
 zhipu:
   key: "afa11a1014b7cf92395f9506c6132f54.2wHlRDiYn921lRDy"

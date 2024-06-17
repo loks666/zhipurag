@@ -40,7 +40,7 @@ async function sendMessage() {
 
     // 显示等待图标
     const loadingElement = document.getElementById('loading');
-    loadingElement.style.display = 'flex';
+    loadingElement.style.display = 'inline';
 
     let url = '/chat';
     if (currentRequestId) {

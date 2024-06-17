@@ -1,7 +1,7 @@
 package com.ruyun.zhipurag.service;
 
-import com.ruyun.zhipurag.entiy.Message;
 import com.ruyun.zhipurag.entiy.LogInfo;
+import com.ruyun.zhipurag.entiy.Message;
 import com.zhipu.oapi.ClientV4;
 import com.zhipu.oapi.Constants;
 import com.zhipu.oapi.service.v4.model.*;
@@ -71,7 +71,7 @@ public class ZhiPuAiService {
             responseBuilder.append(errorMessage);
         }
         String message = responseBuilder.toString();
-        log.info("Id：{},创建时间：{},token用量：[补全：{},提示词：{}，总用量：{}]\n内容：{}\n", logInfo.getId(), logInfo.getFormattedCreated(), logInfo.getCompletionTokens(), logInfo.getPromptTokens(), logInfo.getTotalTokens(), message);
+        log.info("Id：{},requestId：{},创建时间：{},token用量：[补全：{},提示词：{}，总用量：{}]\n内容：{}\n", logInfo.getId(), requestId, logInfo.getFormattedCreated(), logInfo.getCompletionTokens(), logInfo.getPromptTokens(), logInfo.getTotalTokens(), message);
         logInfo = new LogInfo();
         return new Message(userMessage, message, requestId);
     }
