@@ -2,7 +2,7 @@
 
 > 该项目是一个请求智谱知识库的智能聊天系统，环境配置为 JDK 17 和 Maven 3.6.6。
 
-> 如果要运行该项目，请修改[application.yaml](src%2Fmain%2Fresources%2Fapplication.yaml)的key，knowledge_id和prompt为你的应用配置
+> 如果要运行该项目，请修改[application.yaml](src/main/resources/application.yaml)的key，knowledge_id和prompt为你的应用配置
 
 > 以下是项目的各个功能和界面的截图介绍：
 
